@@ -9,6 +9,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import com.android.play.rotomphone.data.Pokemons
 import com.android.play.rotomphone.data.Sample
 import com.android.play.rotomphone.databinding.ActivityMainBinding
 
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         Sample().hello()
+        Pokemons().getList()
 
     }
 
