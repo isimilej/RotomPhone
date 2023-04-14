@@ -36,7 +36,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         Sample().hello()
-        Pokemons().getList()
+        Pokemons().getPokemonList(this)
+//        Pokemons().get("1")
 
     }
 
