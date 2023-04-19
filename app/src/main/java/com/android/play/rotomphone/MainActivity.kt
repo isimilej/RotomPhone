@@ -35,9 +35,7 @@ class MainActivity : AppCompatActivity() {
                 .setAction("Action", null).show()
         }
 
-        Sample().hello()
-        Pokemons().getPokemonList(this)
-//        Pokemons().get("1")
+        Pokemons().createRawJson(this, "${filesDir}/pokemon.json")
 
     }
 
