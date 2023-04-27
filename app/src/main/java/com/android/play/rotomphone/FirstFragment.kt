@@ -1,5 +1,7 @@
 package com.android.play.rotomphone
 
+import android.content.res.AssetManager
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -25,6 +27,12 @@ class FirstFragment : Fragment() {
     ): View? {
 
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
+
+        binding.image.setImageDrawable(Drawable.createFromStream(resources.assets.open("artwork/ball.png"), null))
+        binding.pokemon.setImageDrawable(Drawable.createFromStream(resources.assets.open("artwork/venusaur.png"), null))
+
+        binding.pokemons.adapter = PokemonAdapter()
+
         return binding.root
 
     }
