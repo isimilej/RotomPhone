@@ -1,17 +1,18 @@
 package com.android.play.rotomphone
 
 import android.content.Context
-import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Recycler
+import com.android.play.rotomphone.data.entity.Pokemon
 import com.android.play.rotomphone.databinding.ItemPokemonListBinding
 import com.bumptech.glide.Glide
 
 class PokemonAdapter: RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
 
-    override fun getItemCount() = 20
+    private var pokemonList: MutableList<Pokemon> = mutableListOf()
+    override fun getItemCount() = pokemonList.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(parent.context,
@@ -19,15 +20,26 @@ class PokemonAdapter: RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind()
+        holder.bind(pokemonList[position])
+    }
+
+    fun update(pokemons: MutableList<Pokemon>) {
+        pokemonList = pokemons
+        notifyDataSetChanged()
     }
 
     inner class ViewHolder(private val context: Context, private val binding: ItemPokemonListBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind() {
-//            binding.image.setImageDrawable(Drawable.createFromStream(context.resources.assets.open("artwork/rotom.webp"), null))
-            binding.name.text = "TEST"
-            var url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10034.png"
+        fun bind(pokemon: Pokemon) {
+            var url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png"
             Glide.with(context).load(url).into(binding.image);
+
+            binding.number.text = "${pokemon.id}"
+            binding.name.text = "${pokemon.name}"
+            binding.koname.text = "${pokemon.koname}"
+
+//            Glide.with(context)
+//                .load(Uri.parse("file:///android_asset/artwork/ivysaur.png"))
+//                .into(binding.image)
 
         }
     }

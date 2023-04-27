@@ -8,7 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.android.play.rotomphone.data.Pokemons
 import com.android.play.rotomphone.databinding.FragmentFirstBinding
+import java.io.BufferedReader
+import java.io.FileReader
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -28,13 +31,16 @@ class FirstFragment : Fragment() {
 
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
 
-        binding.image.setImageDrawable(Drawable.createFromStream(resources.assets.open("artwork/ball.png"), null))
-        binding.pokemon.setImageDrawable(Drawable.createFromStream(resources.assets.open("artwork/venusaur.png"), null))
+//        binding.image.setImageDrawable(Drawable.createFromStream(resources.assets.open("artwork/ball.png"), null))
+//        binding.pokemon.setImageDrawable(Drawable.createFromStream(resources.assets.open("artwork/venusaur.png"), null))
 
-        binding.pokemons.adapter = PokemonAdapter()
+        val pokemons = Pokemons().getList("${requireContext().filesDir}/pokemon.json")
+
+        var adapter = PokemonAdapter()
+        binding.pokemons.adapter = adapter
+        adapter.update(pokemons)
 
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -49,4 +55,5 @@ class FirstFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }
