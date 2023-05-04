@@ -11,7 +11,7 @@ import com.android.play.rotomphone.databinding.FragmentSecondBinding
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
-class SecondFragment : Fragment() {
+class PokemonFragment : Fragment() {
 
     private var _binding: FragmentSecondBinding? = null
 
@@ -33,7 +33,7 @@ class SecondFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonSecond.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+            findNavController().navigate(R.id.action_PokemonFragment_to_MainFragment)
         }
     }
 

@@ -1,7 +1,5 @@
 package com.android.play.rotomphone
 
-import android.content.res.AssetManager
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,13 +8,11 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.android.play.rotomphone.data.Pokemons
 import com.android.play.rotomphone.databinding.FragmentFirstBinding
-import java.io.BufferedReader
-import java.io.FileReader
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class FirstFragment : Fragment() {
+class MainFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
 
@@ -38,7 +34,12 @@ class FirstFragment : Fragment() {
 
         var adapter = PokemonAdapter()
         binding.pokemons.adapter = adapter
+        //adapter.setO
         adapter.update(pokemons)
+
+        adapter.setOnChoosePokemonListener {
+            findNavController().navigate(R.id.action_MainFragment_to_PokemonFragment)
+        }
 
         return binding.root
     }
@@ -47,7 +48,7 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+            findNavController().navigate(R.id.action_MainFragment_to_PokemonFragment)
         }
     }
 
