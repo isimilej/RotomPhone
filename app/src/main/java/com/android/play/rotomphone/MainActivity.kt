@@ -30,13 +30,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
-
-        Pokemons().createRawJson(this, "${filesDir}/pokemon.json")
-
+//        Pokemons().createRawJson(this, "${filesDir}/pokemon.json")
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
