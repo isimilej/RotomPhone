@@ -3,7 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/MainFragment">
+    app:startDestination="@id/LaunchFragment">
+
+    <fragment
+        android:id="@+id/LaunchFragment"
+        android:name="com.android.play.rotomphone.LaunchFragment"
+        android:label="@string/launch_fragment_label"
+        tools:layout="@layout/fragment_launch">
+
+        <action
+            android:id="@+id/action_LaunchFragment_to_MainFragment"
+            app:destination="@id/MainFragment"
+            app:popUpTo="@id/LaunchFragment"
+            app:popUpToInclusive="true"/>
+
+    </fragment>
 
     <fragment
         android:id="@+id/MainFragment"
