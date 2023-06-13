@@ -27,9 +27,10 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
 
         val navController = findNavController(R.id.nav_host_fragment_content_main)
+        // TODO: AppBarConfiguration ?
         appBarConfiguration = AppBarConfiguration(navController.graph)
+        // TODO: setupActionBarWithNavController ?
         setupActionBarWithNavController(navController, appBarConfiguration)
-
 //        Pokemons().createRawJson(this, "${filesDir}/pokemon.json")
     }
 
