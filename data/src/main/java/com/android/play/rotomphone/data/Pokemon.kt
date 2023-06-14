@@ -1,4 +1,4 @@
-package com.android.play.rotomphone.data.generator
+package com.android.play.rotomphone.data
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

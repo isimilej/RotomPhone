@@ -1,12 +1,10 @@
 package com.android.play.rotomphone
 
 import android.content.Context
-import android.net.Uri
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.android.play.rotomphone.data.entity.Pokemon
+import com.android.play.rotomphone.data.Pokemon
 import com.android.play.rotomphone.databinding.ItemPokemonListBinding
 import com.bumptech.glide.Glide
 
@@ -46,7 +44,7 @@ class PokemonAdapter: RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
 
             binding.number.text = "${pokemon.id}"
             binding.name.text = "${pokemon.name}"
-            binding.koname.text = "${pokemon.koname}"
+            //binding.koname.text = "${pokemon.koname}"
 
             binding.root.setOnClickListener {
                 onChoosePokemonListener?.let {

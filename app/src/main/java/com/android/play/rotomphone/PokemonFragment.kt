@@ -8,9 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.android.play.rotomphone.databinding.FragmentSecondBinding
 
-/**
- * A simple [Fragment] subclass as the second destination in the navigation.
- */
+
 class PokemonFragment : Fragment() {
 
     private var _binding: FragmentSecondBinding? = null
@@ -23,10 +21,8 @@ class PokemonFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

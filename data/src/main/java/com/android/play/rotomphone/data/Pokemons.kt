@@ -1,9 +1,6 @@
 package com.android.play.rotomphone.data
 
 import android.content.Context
-import android.util.Log
-import com.android.play.rotomphone.data.entity.Pokemon
-import com.android.play.rotomphone.data.generator.GeneratorDataSource
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
@@ -25,11 +22,7 @@ class Pokemons {
 //        GeneratorDataSource().createRawPokemonJson(path)
     }
 
-    fun getList(path: String): MutableList<Pokemon> {
-        var pokemonList = Json { ignoreUnknownKeys = true }.decodeFromString<MutableList<Pokemon>>(read(path))
-        return pokemonList
-    }
-//    var data = read(path)
+    fun getList(path: String): MutableList<Pokemon> = Json { ignoreUnknownKeys = true }.decodeFromString<MutableList<Pokemon>>(read(path))
 
     private fun read(path: String): String {
         try {

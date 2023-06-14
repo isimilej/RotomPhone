@@ -3,6 +3,7 @@ package com.android.play.rotomphone.data.generator
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import com.android.play.rotomphone.data.Pokemon
 import com.android.play.rotomphone.data.PokemonListResult
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
