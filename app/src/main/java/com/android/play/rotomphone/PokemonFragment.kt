@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.android.play.rotomphone.data.Pokemons
 import com.android.play.rotomphone.databinding.FragmentSecondBinding
+import com.bumptech.glide.Glide
 
 
 class PokemonFragment : Fragment() {
@@ -37,6 +38,8 @@ class PokemonFragment : Fragment() {
         // 화면 꾸미기.
         pokemon?.let {
             binding.id.text = it.id.toString()
+            var url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png"
+            Glide.with(requireContext()).load(url).into(binding.image);
             binding.name.text = it.name
         }
 
