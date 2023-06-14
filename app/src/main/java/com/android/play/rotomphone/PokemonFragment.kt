@@ -1,11 +1,12 @@
 package com.android.play.rotomphone
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.Fragment
+import com.android.play.rotomphone.data.Pokemons
 import com.android.play.rotomphone.databinding.FragmentSecondBinding
 
 
@@ -28,9 +29,17 @@ class PokemonFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonSecond.setOnClickListener {
-            findNavController().navigate(R.id.action_PokemonFragment_to_MainFragment)
+        // get pokemon data.
+        var id: Int = requireArguments().getInt("pokemon")
+        var pokemon = Pokemons().get(id, "${requireContext().filesDir}/pokemons.json")
+        Log.d("Pokemon", "$pokemon")
+
+        // 화면 꾸미기.
+        pokemon?.let {
+            binding.id.text = it.id.toString()
+            binding.name.text = it.name
         }
+
     }
 
     override fun onDestroyView() {

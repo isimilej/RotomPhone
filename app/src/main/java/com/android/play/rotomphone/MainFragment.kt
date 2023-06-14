@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.android.play.rotomphone.data.Pokemons
 import com.android.play.rotomphone.databinding.FragmentFirstBinding
@@ -30,15 +31,16 @@ class MainFragment : Fragment() {
 //        binding.image.setImageDrawable(Drawable.createFromStream(resources.assets.open("artwork/ball.png"), null))
 //        binding.pokemon.setImageDrawable(Drawable.createFromStream(resources.assets.open("artwork/venusaur.png"), null))
 
-        val pokemons = Pokemons().getList("${requireContext().filesDir}/pokemon.json")
+        val pokemons = Pokemons().getList("${requireContext().filesDir}/pokemons.json")
 
         var adapter = PokemonAdapter()
         binding.pokemons.adapter = adapter
         //adapter.setO
         adapter.update(pokemons)
 
-        adapter.setOnChoosePokemonListener {
-            findNavController().navigate(R.id.action_MainFragment_to_PokemonFragment)
+        adapter.setOnChoosePokemonListener { pokemon ->
+            val bundle = bundleOf("pokemon" to pokemon.id)
+            findNavController().navigate(R.id.action_MainFragment_to_PokemonFragment, bundle)
         }
 
         return binding.root

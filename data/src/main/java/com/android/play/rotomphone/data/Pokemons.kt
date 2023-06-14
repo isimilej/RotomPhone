@@ -39,4 +39,11 @@ class Pokemons {
         }
     }
 
+    fun get(id: Int, path: String): Pokemon? {
+        Json { ignoreUnknownKeys = true }.decodeFromString<MutableList<Pokemon>>(read(path)).forEach {
+            if (it.id == id) return it
+        }
+        return null
+    }
+
 }

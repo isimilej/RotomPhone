@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 class PokemonAdapter: RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
 
     fun interface OnChoosePokemonListener {
-        fun onChoosePokemon()
+        fun onChoosePokemon(pokemon: Pokemon)
     }
     private var onChoosePokemonListener: OnChoosePokemonListener? = null
 
@@ -48,7 +48,7 @@ class PokemonAdapter: RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
 
             binding.root.setOnClickListener {
                 onChoosePokemonListener?.let {
-                    it.onChoosePokemon()
+                    it.onChoosePokemon(pokemon)
                 }
             }
 
