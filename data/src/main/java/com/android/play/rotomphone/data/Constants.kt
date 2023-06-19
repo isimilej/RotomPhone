@@ -1,43 +1,40 @@
 package com.android.play.rotomphone.data
 
 object Constants {
-    const val TYPES = """
-        {
-          "normal": "노말",
-          "fighting": "격투",
-          "flying": "비행",
-          "poison": "독",
-          "ground": "땅",
-          "rock": "바위",
-          "bug": "벌레",
-          "ghost": "고스트",
-          "steel": "강철",
-          "fire": "불꽃",
-          "water": "물",
-          "grass": "풀",
-          "electric": "전기",
-          "psychic": "에스퍼",
-          "ice": "얼음",
-          "dragon": "드래곤",
-          "dark": "악",
-          "fairy": "페어리",
-          "unknown": "???",
-          "shadow": "다크"
-        }
-    """
 
-    const val STATS = """
-        {
-          "hp": "HP",
-          "attack": "공격",
-          "defense": "방어",
-          "special-attack": "특수공격",
-          "special-defense": "특수방어",
-          "speed": "스피드",
-          "accuracy": "명중률",
-          "evasion": "회피율"
-        }
-    """
+    val TYPES = mapOf<String, String>(
+        "normal" to "노말",
+        "fighting" to  "격투",
+        "flying" to "비행",
+        "poison" to "독",
+        "ground" to "땅",
+        "rock" to "바위",
+        "bug" to "벌레",
+        "ghost" to "고스트",
+        "steel" to "강철",
+        "fire" to "불꽃",
+        "water" to "물",
+        "grass" to "풀",
+        "electric" to "전기",
+        "psychic" to "에스퍼",
+        "ice" to "얼음",
+        "dragon" to "드래곤",
+        "dark" to "악",
+        "fairy" to "페어리",
+        "unknown" to "???",
+        "shadow" to "다크"
+    )
+
+    val STATS = mapOf<String, String>(
+          "hp" to "HP",
+          "attack" to "공격",
+          "defense" to "방어",
+          "special-attack" to "특수공격",
+          "special-defense" to "특수방어",
+          "speed" to "스피드",
+          "accuracy" to "명중률",
+          "evasion" to "회피율"
+    )
 
     const val GENERATIONS = """
         {
