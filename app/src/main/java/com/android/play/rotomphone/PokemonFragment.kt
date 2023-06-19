@@ -40,7 +40,13 @@ class PokemonFragment : Fragment() {
         pokemon?.let {
             binding.id.text = it.id.toString()
             var url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png"
-            Glide.with(requireContext()).load(url).into(binding.image);
+            Glide.with(requireContext())
+                .load(url)
+                .placeholder(R.drawable.rotom)
+                .into(binding.image);
+
+            //.load(Uri.parse("file:///android_asset/<assetName>"))
+
             binding.name.text = it.name
 
             binding.height.text = it.height.toString()
