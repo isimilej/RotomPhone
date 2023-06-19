@@ -1,12 +1,14 @@
 package com.android.play.rotomphone.data
 
 import android.content.Context
+import android.util.Log
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import java.io.BufferedReader
 import java.io.FileReader
 import kotlinx.serialization.decodeFromString
+import java.io.IOException
 
 
 @Serializable
@@ -22,25 +24,20 @@ class Pokemons {
 //        GeneratorDataSource().createRawPokemonJson(path)
     }
 
-    fun getList(path: String): MutableList<Pokemon> = Json { ignoreUnknownKeys = true }.decodeFromString<MutableList<Pokemon>>(read(path))
-
-    private fun read(path: String): String {
-        try {
-            BufferedReader(FileReader(path)).use { reader ->
-                var line: String?
-                val b = StringBuilder()
-                while (reader.readLine().also { line = it } != null) {
-                    b.append(line)
-                }
-                return b.toString()
+    fun getList(context: Context): MutableList<Pokemon> {
+        return try {
+            var content = context.assets.open("pokemons.json").bufferedReader().use {
+                it.readText()
             }
-        } catch (e: Exception) {
-            return ""
+            Json { ignoreUnknownKeys = true }.decodeFromString(content)
+        } catch (e: IOException) {
+            Log.e("POKEMON", e.toString())
+            mutableListOf()
         }
     }
 
-    fun get(id: Int, path: String): Pokemon? {
-        Json { ignoreUnknownKeys = true }.decodeFromString<MutableList<Pokemon>>(read(path)).forEach {
+    fun get(id: Int, context: Context): Pokemon? {
+        getList(context).forEach {
             if (it.id == id) return it
         }
         return null

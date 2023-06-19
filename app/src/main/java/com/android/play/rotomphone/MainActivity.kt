@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
         // TODO: setupActionBarWithNavController ?
         setupActionBarWithNavController(navController, appBarConfiguration)
-//        Pokemons().createRawJson(this, "${filesDir}/pokemon.json")
+//        Pokemons().createRawJson(this, "${filesDir}/pokemons.json")
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

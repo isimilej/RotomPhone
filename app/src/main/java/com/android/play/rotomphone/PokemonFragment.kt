@@ -32,7 +32,7 @@ class PokemonFragment : Fragment() {
 
         // get pokemon data.
         var id: Int = requireArguments().getInt("pokemon")
-        var pokemon = Pokemons().get(id, "${requireContext().filesDir}/pokemons.json")
+        var pokemon = Pokemons().get(id, requireContext())
         Log.d("Pokemon", "$pokemon")
 
         // 화면 꾸미기.

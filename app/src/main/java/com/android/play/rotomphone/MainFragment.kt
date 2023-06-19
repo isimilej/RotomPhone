@@ -28,10 +28,7 @@ class MainFragment : Fragment() {
 
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
 
-//        binding.image.setImageDrawable(Drawable.createFromStream(resources.assets.open("artwork/ball.png"), null))
-//        binding.pokemon.setImageDrawable(Drawable.createFromStream(resources.assets.open("artwork/venusaur.png"), null))
-
-        val pokemons = Pokemons().getList("${requireContext().filesDir}/pokemons.json")
+        val pokemons = Pokemons().getList(requireContext())
 
         var adapter = PokemonAdapter()
         binding.pokemons.adapter = adapter
